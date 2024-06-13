@@ -29,3 +29,12 @@ class TestGame(TestCase):
         self.assertEqual(3, result.get_strikes())
         self.assertEqual(0, result.get_ball())
 
+    def test_return_solve_result_if_unmethod_number(self):
+        self.game.question = "123"
+        result: GameResult = self.game.guess("456")
+
+        self.assertIsNotNone(result)
+        self.assertFalse(result.get_solved())
+        self.assertEqual(0, result.get_strikes())
+        self.assertEqual(0, result.get_ball())
+
